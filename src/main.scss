@@ -1,0 +1,15 @@
+@import "sass/Header";
+@import "sass/Nav";
+@import "sass/Videos";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 74%;
+}
+body {
+  background: #000;
+}

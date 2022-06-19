@@ -1,0 +1,70 @@
+.header {
+  padding: 0.4rem;
+  background-color: rgb(7, 7, 7);
+  &-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.5rem;
+  }
+}
+.search {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: flex-end;
+  position: relative;
+  &-bar {
+    width: 100%;
+    border: 1px solid white;
+    height: 2.9rem;
+    background: #000;
+    color: white;
+    outline: #f0f0f0;
+  }
+  &-label {
+    font-size: 1rem;
+    color: white;
+    padding: 1.3rem;
+
+    position: absolute;
+  }
+}
+
+.icon {
+  color: #f0f0f0;
+  font-size: 1.6rem;
+  margin-right: 2rem;
+  border: none;
+  text-decoration: none;
+}
+.logo {
+  width: 10%;
+  height: auto;
+  filter: brightness(200%);
+  margin-left: 1rem;
+}
+.logo-youtube {
+  width: 100%;
+}
+.active {
+  display: none;
+}
+@media (max-width: 685px) {
+  html {
+    font-size: 65%;
+  }
+  .deactive {
+    display: none;
+  }
+  .icon {
+    margin-right: 0.4rem;
+  }
+  .active {
+    display: block;
+  }
+  .logo {
+    width: 15%;
+    margin-left: 0rem;
+  }
+}
