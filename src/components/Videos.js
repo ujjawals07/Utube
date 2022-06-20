@@ -4,10 +4,40 @@ import { fetchdata } from "../Actions";
 class Videos extends React.Component {
   componentDidMount() {
     this.props.fetchdata();
-    console.log(this.props.fetchdata());
   }
-
-
+  renderList() {
+    return this.props.post.map((v) => {
+      return (
+        <div className="r-items">
+          <div className="r-image">
+            <img
+              src={v.snippet.thumbnails.medium.url}
+              alt=""
+              srcset=""
+              className="r-product-image"
+            />
+            <div className="r-item-name">
+             {v.snippet.title}
+            </div>
+            <div className="r-item-price">
+              <span className="fas fa-eye i"></span>
+              <h2>{v.statistics.viewCount} m views 2days ago</h2>
+            </div>
+            <div className="r-channle-detail">
+              <div className="r-channle-detail-pic">
+                <img
+                  src="img/4902560.jpg"
+                  alt=""
+                  className="r-channle-detail-img"
+                />
+              </div>
+              <h3>{v.snippet.channelTitle}</h3>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
 
   render() {
     return (
@@ -78,413 +108,7 @@ class Videos extends React.Component {
             </ul>
           </div>
           <div className="result-images">
-            <div className="r-product">
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="r-items">
-                <div className="r-image">
-                  <img
-                    src="img/4902560.jpg"
-                    alt=""
-                    srcset=""
-                    className="r-product-image"
-                  />
-                  <div className="r-item-name">
-                    punjab bolda full video bu ujjawal ji congress
-                  </div>
-                  <div className="r-item-price">
-                    <span className="fas fa-eye i"></span>
-                    <h2>31 m views 2days ago</h2>
-                  </div>
-                  <div className="r-channle-detail">
-                    <div className="r-channle-detail-pic">
-                      <img
-                        src="img/4902560.jpg"
-                        alt=""
-                        className="r-channle-detail-img"
-                      />
-                    </div>
-                    <h3>cricket.com australis</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="r-product">{this.renderList()}</div>
           </div>
         </div>
       </React.Fragment>

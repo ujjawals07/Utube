@@ -9,8 +9,11 @@ export const fetchdata = () => async (dispatch) => {
       regionCode: "IN",
       maxResults: 20,
       key: "AIzaSyBSe8i-ObHLyxdTFb3XHK0msnFoAPH_hXI",
+      pageToken: "",
     },
   });
-  console.log(response);
-  dispatch({ type: "FETCH_POSTS", payload: response.data });
+  dispatch({
+    type: "FETCH_POSTS",
+    payload: response.data.items,
+  });
 };
