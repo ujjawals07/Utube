@@ -8,7 +8,6 @@ export const fetchdata = () => async (dispatch) => {
       type: "video",
       regionCode: "IN",
       maxResults: 20,
-      key: "AIzaSyBSe8i-ObHLyxdTFb3XHK0msnFoAPH_hXI",
       pageToken: "",
     },
   });

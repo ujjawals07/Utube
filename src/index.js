@@ -16,5 +16,6 @@ const ReactRoot = ReactDOM.createRoot(root);
 ReactRoot.render(
   <Provider store={store}>
     <App />
+    
   </Provider>
 );

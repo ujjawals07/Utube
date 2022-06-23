@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchdata } from "../Actions";
-class Videos extends React.Component {
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import VideoList from "./VideoList";
+import YouTubeApi from "../Apis/YouTubeApi";
+const Videos = (props) => {
+  console.log(props);
+  const [data, setdata] = useState();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchdata());
+  }, [dispatch]);
+
+
+
+  return (
+    <React.Fragment>
+      {props.post.map((v) => {
+        return <VideoList v={v} key={v.id} />;
+      })}
+    </React.Fragment>
+  );
+};
+
+const mapto = (state) => {
+  console.log(state.post);
+  return { post: state.post };
+};
+export default connect(mapto, { fetchdata })(Videos);
+
+/*class Videos extends React.Component {
   componentDidMount() {
     this.props.fetchdata();
   }
+
+
+
   renderList() {
     return this.props.post.map((v) => {
       return (
-        <div className="r-items">
+        <div className="r-items" key={v.id}>
           <div className="r-image">
             <img
               src={v.snippet.thumbnails.medium.url}
@@ -16,9 +48,7 @@ class Videos extends React.Component {
               srcset=""
               className="r-product-image"
             />
-            <div className="r-item-name">
-             {v.snippet.title}
-            </div>
+            <div className="r-item-name">{v.snippet.title}</div>
             <div className="r-item-price">
               <span className="fas fa-eye i"></span>
               <h2>{v.statistics.viewCount} m views 2days ago</h2>
@@ -114,10 +144,4 @@ class Videos extends React.Component {
       </React.Fragment>
     );
   }
-}
-
-const mapto = (state) => {
-  console.log(state.post);
-  return { post: state.post };
-};
-export default connect(mapto, { fetchdata })(Videos);
+}*/
