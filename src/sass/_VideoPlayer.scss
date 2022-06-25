@@ -1,0 +1,320 @@
+.videoplayer {
+  display: grid;
+  grid-template-columns: 70vw 1fr;
+  color: white;
+}
+.videoplayertv {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+
+
+  &-title {
+    margin-top: 0.4rem;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    //width: 40vw;
+  }
+  &-description {
+    margin-top: 1rem;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+   // width: 50vw;
+  }
+  &-icons {
+    margin-top: 1.5rem;
+    display: flex;
+    margin-bottom: 2rem;
+    &-i {
+      font-size: 1rem;
+      margin: 0.4rem 1rem;
+    }
+  }
+
+  &-channle {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid white;
+    &-details {
+      display: flex;
+      align-items: center;
+    }
+    &-img {
+      width: 10%;
+      height: auto;
+    }
+    &-pic {
+      width: 90%;
+      height: 100%;
+      border-radius: 200px;
+    }
+    &-name {
+      font-size: 1.4rem;
+      font-family: sans-serif;
+      padding: 0rem 0.5rem;
+    }
+  }
+}
+
+.iframetv {
+  width: 100%;
+}
+.views {
+  margin-top: 0.7rem;
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.followers {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.subscribe {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 500;
+  background-color: rgb(185, 4, 4);
+  padding: 0.9rem 1.4rem;
+  letter-spacing: 0.3px;
+}
+
+.comments {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  &-number {
+    font-family: 1.5rem;
+    font-family: sans-serif;
+  }
+
+  &-comment {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-pic {
+    width: 8%;
+    height: auto;
+  }
+  &-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+  }
+  &-inputs {
+    width: 100%;
+    padding: 0.2rem 0.6rem;
+  }
+  &-input {
+    width: 100%;
+    height: 3rem;
+    background: none;
+    color: white;
+    border-bottom: 0.3px solid white;
+    outline: none;
+  }
+}
+
+.comment {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(72, 70, 70);
+  padding: 0.5rem 0.7rem;
+  border: none;
+}
+
+.user-comments {
+  margin-top: 2rem;
+  display: flex;
+  border-bottom: 0.2px solid white;
+  padding: 0.3rem;
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.user-name {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  margin-left: 0.4rem;
+  padding: 0.2rem 1rem;
+}
+.timeago {
+  font-size: 1rem;
+  font-family: sans-serif;
+  margin-left: 0.5rem;
+}
+.user-comment {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  margin-top: 0.4rem;
+  margin-left: 0.4rem;
+  padding: 0.2rem 1rem;
+}
+//user comment pic
+.cp {
+  border-radius: 50px;
+  width: 8%;
+  height: auto;
+}
+.ci {
+  border-radius: 50px;
+}
+
+//suggestio
+.suggestions {
+  grid-column: 2/2;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  overflow: hidden;
+  margin: 1rem 2rem;
+  &-videos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 0.5px solid white;
+      margin: 1rem;
+      &-channle {
+        display: flex;
+        align-items: center;
+
+        &-name {
+          font-size: 1rem;
+          font-family: sans-serif;
+          margin-left: 0.4rem;
+        }
+      }
+      &-details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        &-h {
+          font-size: 1rem;
+          font-family: sans-serif;
+          margin-bottom: 0.5rem;
+        }
+        &-views {
+          font-size: 1rem;
+          font-family: sans-serif;
+        }
+        &-date {
+          font-family: sans-serif;
+          font-size: 1rem;
+        }
+      }
+      &-img {
+        width: 150vw;
+        height: auto;
+      }
+      &-pic {
+        width: 100%;
+        height: auto;
+      }
+      &-channle-pic {
+        width: 20%;
+        height: 20%;
+        margin-top: 0.6rem;
+      }
+      &-channle-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 150%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1124px) {
+  .suggestions {
+    grid-column: 1/3;
+    margin-top: 4rem;
+  }
+  .suggestions-videos-item-channle-pic {
+    width: 6%;
+  }
+  .suggestions-videos-item-channle-img {
+    border-radius: 50px;
+  }
+  .suggestions-videos-item-img {
+    width: 100%;
+  }
+  .suggestions-videos-item-details {
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width: 821px) {
+  .videoplayertv {
+    grid-column: 1/-1;
+  }
+  .videoplayertv-channle-img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .videoplayertv-channle-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 90px;
+  }
+
+  .cp {
+    border-radius: 20px;
+    width: 2rem;
+    height: 2rem;
+  }
+  .user-cp {
+    width: 5rem;
+    height: 3rem;
+  }
+  .suggestions-videos-item-img {
+    width: 150vh;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 55%;
+  }
+  .comment {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .subscribe {
+    font-size: 1rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .videoplayertv-channle-name {
+    font-family: 1rem;
+    padding: 0.2rem 0.2rem;
+  }
+  .followers {
+    font-family: 0.8rem;
+    padding: 0.2rem;
+  }
+}
+h4 {
+  font-family: sans-serif;
+  color: rgb(217, 217, 217);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-weight: 400;
+}

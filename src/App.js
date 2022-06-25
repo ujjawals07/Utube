@@ -3,13 +3,15 @@ import Header from "./components/Header";
 import css from "./main.css";
 import Section from "./components/Section";
 import VideoPlayer from "./Links/VideoPlayer";
+import Nav from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Like from "./components/Like";
 const App = () => {
   return (
     <React.Fragment>
-      <Header />
       <Router>
+        <Header />
+
         <Routes>
           <Route exact path="/" element={<Section />} />
           <Route path="/details/:id" element={<VideoPlayer />} />

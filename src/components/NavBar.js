@@ -46,4 +46,4 @@ const Nav = () => {
     </React.Fragment>
   );
 };
-export default Nav
+export default Nav;
