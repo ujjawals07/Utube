@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchdata } from "../Actions";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import VideoList from "./VideoList";
 import YouTubeApi from "../Apis/YouTubeApi";
 const Videos = (props) => {
   console.log(props);
-  const [data, setdata] = useState();
+ 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchdata());

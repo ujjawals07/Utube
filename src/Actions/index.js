@@ -16,3 +16,16 @@ export const fetchdata = () => async (dispatch) => {
     payload: response.data.items,
   });
 };
+
+export const Detailsdata = (id) => async (dispatch) => {
+  const { data } = await YouTubeApi.get("/videos", {
+    params: {
+      part: "snippet,statistics",
+      id: id,
+    },
+  });
+  dispatch({
+    type: "DETAIL_POSTS",
+    payload: data.items[0],
+  });
+};

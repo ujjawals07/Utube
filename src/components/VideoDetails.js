@@ -1,18 +1,34 @@
 import React from "react";
-
-const VideDetails = () => {
+import numeral from "numeral";
+import moment from "moment";
+import ShowMoreText from "react-show-more-text";
+const VideDetails = ({ video }, { videoid }) => {
   return (
     <div className="videoplayertv-details">
-      <div className="videoplayertv-title">rahane is playaing bell today</div>
-      <h5 className="views">24k views 27jan 2020</h5>
-      <p className="videoplayertv-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sit
-        illo optio, deserunt nisi blanditiis id explicabo quos, voluptates ipsa
-        aliquid dolorem reprehenderit perferendis delectus necessitatibus vero
-        excepturi corrupti officia?
-      </p>
+      <div className="videoplayertv-title">{video?.snippet?.title}</div>
+      <h5 className="views">
+        {" "}
+        {numeral(video?.statistics?.viewCount).format("0.a")} Views •{" "}
+        {moment(video?.snippet?.publishedAt).fromNow()}
+      </h5>
+      <ShowMoreText
+        lines={3}
+        more="show more"
+        less="show less"
+        anchorClass="show  more text"
+        expanded={false}
+        className="show"
+      >
+        <p className="videoplayertv-description">
+          {video?.snippet?.description}
+        </p>
+      </ShowMoreText>
       <div className="videoplayertv-icons">
-        <i className="fas fa-thumbs-up videoplayertv-icons-i"></i>
+        <i className="fas fa-thumbs-up videoplayertv-icons-i">
+          <span className="inumber">
+            {numeral(video?.statistics?.likeCount).format("0.a")}
+          </span>
+        </i>
         <i className="fas fa-thumbs-down videoplayertv-icons-i"></i>
         <i className="fas fa-heart videoplayertv-icons-i"></i>
       </div>
@@ -28,7 +44,7 @@ const VideDetails = () => {
             />
           </div>
           <div className="videoplayertv-channle-name">
-            ujju banna
+            {video?.snippet?.channelTitle}
             <h5 className="followers">7.9m</h5>
           </div>
         </div>
@@ -37,4 +53,4 @@ const VideDetails = () => {
     </div>
   );
 };
-export default VideDetails
+export default VideDetails;

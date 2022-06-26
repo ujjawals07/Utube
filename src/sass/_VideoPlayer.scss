@@ -8,7 +8,6 @@
   flex-direction: column;
   padding: 1rem 2rem;
 
-
   &-title {
     margin-top: 0.4rem;
     font-size: 1.6rem;
@@ -22,14 +21,14 @@
     font-family: sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
-   // width: 50vw;
+    // width: 50vw;
   }
   &-icons {
     margin-top: 1.5rem;
     display: flex;
     margin-bottom: 2rem;
     &-i {
-      font-size: 1rem;
+      font-size: 1.5rem;
       margin: 0.4rem 1rem;
     }
   }
@@ -317,4 +316,14 @@ h4 {
   font-size: 1.5rem;
   text-transform: capitalize;
   font-weight: 400;
+}
+.inumber {
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+.show {
+  color: white;
+
+  font-family: sans-serif;
+  text-decoration: none;
 }

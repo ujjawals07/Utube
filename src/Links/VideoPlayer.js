@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Videos from "../components/Videos";
 import Nav from "../components/NavBar";
 import VideDetails from "../components/VideoDetails";
 import Comments from "../components/Comments";
 import SuggestVideo from "../components/SuggestVideo";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Detailsdata } from "../Actions";
+import { connect } from "react-redux";
 const VideoPlayer = () => {
   const { id } = useParams();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(Detailsdata(id));
+  }, [dispatch, id]);
+
+  const video = useSelector((state) => state.description);
+  console.log(video?.snippet?.title);
   return (
     <div className="videoplayer">
       <div className="videoplayertv">
@@ -15,11 +27,11 @@ const VideoPlayer = () => {
             className="iframetv"
             width="500"
             height="300"
-            title="ujjawal"
+            title="t"
             src={`https://www.youtube.com/embed/${id}`}
           ></iframe>
         </div>
-        <VideDetails />
+        <VideDetails video={video} videoid={id} />
         <Comments />
       </div>
       <SuggestVideo />
@@ -28,6 +40,7 @@ const VideoPlayer = () => {
 };
 
 export default VideoPlayer;
+
 /*    <div className="u">
       <h2>ujjawal</h2>
       <iframe
