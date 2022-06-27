@@ -27,7 +27,7 @@ const VideoPlayer = () => {
             className="iframetv"
             width="500"
             height="300"
-            title="t"
+            title={video?.snippet?.title}
             src={`https://www.youtube.com/embed/${id}`}
           ></iframe>
         </div>

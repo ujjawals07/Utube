@@ -1,6 +1,12 @@
 import React from "react";
-
-const header = () => {
+import { useDispatch } from "react-redux";
+import { Login } from "../Actions";
+const Header = () => {
+  const dispatch = useDispatch();
+  const Loginopen = () => {
+    dispatch(Login());
+    console.log("op");
+  };
   return (
     <React.Fragment>
       <div className="header">
@@ -15,7 +21,7 @@ const header = () => {
           </div>
           <div className="icons">
             <a href="#" className="fas fa-bell icon deactive"></a>
-            <a href="#" className="fas fa-user icon"></a>
+            <a href="#" className="fas fa-user icon" onClick={Loginopen}></a>
           </div>
         </div>
       </div>
@@ -23,4 +29,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;

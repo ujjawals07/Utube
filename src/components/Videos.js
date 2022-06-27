@@ -6,14 +6,10 @@ import { useDispatch } from "react-redux";
 import VideoList from "./VideoList";
 import YouTubeApi from "../Apis/YouTubeApi";
 const Videos = (props) => {
-  console.log(props);
- 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchdata());
   }, [dispatch]);
-
-
 
   return (
     <React.Fragment>
@@ -25,7 +21,6 @@ const Videos = (props) => {
 };
 
 const mapto = (state) => {
-  console.log(state.post);
   return { post: state.post };
 };
 export default connect(mapto, { fetchdata })(Videos);

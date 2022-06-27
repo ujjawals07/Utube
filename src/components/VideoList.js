@@ -16,7 +16,7 @@ const VideoList = ({ v }) => {
   } = v;
 
   const videoid = id;
-  console.log(videoid);
+
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -27,7 +27,6 @@ const VideoList = ({ v }) => {
           id: videoid,
         },
       });
-      console.log(items);
     };
     get_video_details();
   }, [videoid]);

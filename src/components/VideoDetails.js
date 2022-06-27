@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Channeldata } from "../Actions";
+import { useSelector } from "react-redux";
 import numeral from "numeral";
 import moment from "moment";
 import ShowMoreText from "react-show-more-text";
 const VideDetails = ({ video }, { videoid }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(Channeldata(video?.snippet?.channelId));
+  }, [dispatch, video?.snippet?.channelId]);
+
+  const channel = useSelector((state) => state.channel);
+  console.log(channel?.statistics?.subscriberCount);
+
   return (
     <div className="videoplayertv-details">
       <div className="videoplayertv-title">{video?.snippet?.title}</div>
@@ -37,7 +48,7 @@ const VideDetails = ({ video }, { videoid }) => {
         <div className="videoplayertv-channle-details">
           <div className="videoplayertv-channle-img">
             <img
-              src="img/4902560.jpg"
+              src={channel?.snippet?.thumbnails?.medium?.url}
               alt=""
               srcset=""
               className="videoplayertv-channle-pic"
@@ -45,7 +56,10 @@ const VideDetails = ({ video }, { videoid }) => {
           </div>
           <div className="videoplayertv-channle-name">
             {video?.snippet?.channelTitle}
-            <h5 className="followers">7.9m</h5>
+            <h5 className="followers">
+              {" "}
+              {numeral(channel?.statistics?.subscriberCount).format("0.a")} subscribers
+            </h5>
           </div>
         </div>
         <button className="subscribe">subscribe</button>
