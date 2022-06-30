@@ -1,7 +1,8 @@
 .videoplayer {
   display: grid;
-  grid-template-columns: 70vw 1fr;
+  grid-template-columns:101vw;
   color: white;
+  overflow: hidden;
 }
 .videoplayertv {
   display: flex;
@@ -101,13 +102,10 @@
     display: flex;
     justify-content: space-between;
   }
-  &-pic {
-    width: 8%;
-    height: auto;
-  }
+
   &-img {
-    width: 100%;
-    height: 100%;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50px;
   }
   &-inputs {

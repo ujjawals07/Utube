@@ -4,6 +4,7 @@
   grid-template-columns: 20vw 1fr;
   grid-template-rows: auto;
 }
+
 .nav {
   background: rgb(0, 0, 0);
   grid-column: 1/2;
@@ -38,5 +39,8 @@ span {
     &-btn {
       margin-top: 0.3rem;
     }
+  }
+  .nav-hidden{
+    display: none;
   }
 }

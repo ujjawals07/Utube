@@ -6,13 +6,15 @@ import numeral from "numeral";
 import moment from "moment";
 import ShowMoreText from "react-show-more-text";
 const VideDetails = ({ video }, { videoid }) => {
+  console.log(video);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Channeldata(video?.snippet?.channelId));
+    //dispatch(Subscription(video?.snippet?.channelId));
   }, [dispatch, video?.snippet?.channelId]);
 
   const channel = useSelector((state) => state.channel);
-  console.log(channel?.statistics?.subscriberCount);
+  //console.log(channel?.statistics?.subscriberCount);
 
   return (
     <div className="videoplayertv-details">
@@ -49,8 +51,6 @@ const VideDetails = ({ video }, { videoid }) => {
           <div className="videoplayertv-channle-img">
             <img
               src={channel?.snippet?.thumbnails?.medium?.url}
-              alt=""
-              srcset=""
               className="videoplayertv-channle-pic"
             />
           </div>
@@ -58,7 +58,8 @@ const VideDetails = ({ video }, { videoid }) => {
             {video?.snippet?.channelTitle}
             <h5 className="followers">
               {" "}
-              {numeral(channel?.statistics?.subscriberCount).format("0.a")} subscribers
+              {numeral(channel?.statistics?.subscriberCount).format("0.a")}•
+              subscribers
             </h5>
           </div>
         </div>

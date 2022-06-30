@@ -20,22 +20,24 @@ const VideoPlayer = () => {
   const video = useSelector((state) => state.description);
   console.log(video?.snippet?.title);
   return (
-    <div className="videoplayer">
-      <div className="videoplayertv">
-        <div class="videoplayertv-iframe">
-          <iframe
-            className="iframetv"
-            width="500"
-            height="300"
-            title={video?.snippet?.title}
-            src={`https://www.youtube.com/embed/${id}`}
-          ></iframe>
+    <React.Fragment>
+      <div className="videoplayer">
+        <div className="videoplayertv">
+          <div class="videoplayertv-iframe">
+            <iframe
+              className="iframetv"
+              width="500"
+              height="300"
+              title="my"
+              src={`https://www.youtube.com/embed/${id}`}
+            ></iframe>
+          </div>
+          <VideDetails video={video} />
+          <Comments videoid={id} />
         </div>
-        <VideDetails video={video} videoid={id} />
-        <Comments />
       </div>
       <SuggestVideo />
-    </div>
+    </React.Fragment>
   );
 };
 

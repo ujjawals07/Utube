@@ -2,17 +2,20 @@
 @import "sass/Nav";
 @import "sass/Videos";
 @import "sass/VideoPlayer";
+@import "sass/Search";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  font-size: 74%;
-}
+
 body {
   background: #000;
 }
 .u {
   color: rgb(236, 227, 227);
+}
+
+.uuu{
+  color: white;
 }

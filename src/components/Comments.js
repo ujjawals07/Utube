@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { GetComments } from "../Actions";
+import { useSelector } from "react-redux";
+import UserComments from "./UserComments";
+const Comments = ({ videoid }) => {
+  console.log(videoid);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(GetComments(videoid));
+  }, [videoid, dispatch]);
 
-const Comments = () => {
+  const CommentList = useSelector((state) => state.commentlist);
+
+  const cl = CommentList?.map((c) => c.snippet.topLevelComment.snippet);
+  console.log(cl);
+
   return (
     <div className="comments">
       <h3>comments</h3>
-      <h6 className="comments-number">999</h6>
+      <h6 className="comments-number"></h6>
       <div className="comments-comment">
         <div className="comments-pic user-cp">
           <img src="public/img/" alt="" srcset="" className="comments-img" />
@@ -15,86 +29,9 @@ const Comments = () => {
         <button className="comment">comment</button>
       </div>
       <div className="users">
-        <div className="user-comments">
-          <div className="comments-pic cp">
-            <img
-              src="public/img/4902560.jpg"
-              alt=""
-              srcset=""
-              className="comments-img ci"
-            />
-          </div>
-          <div className="user-comments-detail">
-            <div className="user-name">
-              ujjawal <span className="timeago">23 m ago</span>
-            </div>
-            <div className="user-comment">i am very well</div>
-          </div>
-        </div>
-        <div className="user-comments">
-          <div className="comments-pic cp">
-            <img
-              src="public/img/"
-              alt=""
-              srcset=""
-              className="comments-img ci"
-            />
-          </div>
-          <div className="user-comments-detail">
-            <div className="user-name">
-              ujjawal <span className="timeago">23 m ago</span>
-            </div>
-            <div className="user-comment">i am very well</div>
-          </div>
-        </div>
-        <div className="user-comments">
-          <div className="comments-pic cp">
-            <img
-              src="public/img/"
-              alt=""
-              srcset=""
-              className="comments-img ci"
-            />
-          </div>
-          <div className="user-comments-detail">
-            <div className="user-name">
-              ujjawal <span className="timeago">23 m ago</span>
-            </div>
-            <div className="user-comment">i am very well</div>
-          </div>
-        </div>
-        <div className="user-comments">
-          <div className="comments-pic cp">
-            <img
-              src="public/img/"
-              alt=""
-              srcset=""
-              className="comments-img ci"
-            />
-          </div>
-          <div className="user-comments-detail">
-            <div className="user-name">
-              ujjawal <span className="timeago">23 m ago</span>
-            </div>
-            <div className="user-comment">i am very well</div>
-          </div>
-        </div>
-        <div className="user-comments">
-          <div className="comments-pic cp">
-            <img
-              src="public/img/"
-              alt=""
-              srcset=""
-              className="comments-img ci"
-            />
-          </div>
-          <div className="user-comments-detail">
-            <div className="user-name">
-              ujjawal <span className="timeago">23 m ago</span>
-            </div>
-            <div className="user-comment">i am very well</div>
-          </div>
-        </div>
+        {cl.map((comment,i) => {
+          return <UserComments comment={comment} key={i} />;
+        })}
       </div>
     </div>
   );

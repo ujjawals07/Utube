@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Videos from "./Videos";
 import YouTubeApi from "../Apis/YouTubeApi";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+
 const VideoList = ({ v }) => {
+  const [channelIcon, setChannelIcon] = useState(null);
   const {
     id,
     snippet: {
@@ -31,6 +33,20 @@ const VideoList = ({ v }) => {
     get_video_details();
   }, [videoid]);
 
+  useEffect(() => {
+    const get_channel_icon = async () => {
+      const {
+        data: { items },
+      } = await YouTubeApi("/channels", {
+        params: {
+          part: "snippet",
+          id: channelId,
+        },
+      });
+      setChannelIcon(items[0].snippet.thumbnails.default);
+    };
+    get_channel_icon();
+  }, [channelId]);
   let navigate = useNavigate();
   const handleclick = () => {
     navigate(`/details/${videoid}`);
