@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Login } from "../Actions";
 import { useNavigate } from "react-router";
+import loago from "../img/logo.png";
 const Header = () => {
   const dispatch = useDispatch();
   const Loginopen = () => {
-    dispatch(Login());
+    console.log("y");
   };
   let navigate = useNavigate();
   const [input, setinput] = useState("");
@@ -14,15 +15,20 @@ const Header = () => {
     e.preventDefault();
     navigate(`/search/${input}`);
   };
-  const accessToken = useSelector((state) => state.auth);
-  console.log(accessToken);
+  // const accessToken = useSelector((state) => state.auth);
+  // console.log(accessToken);
   return (
     <React.Fragment>
       <div className="header">
         <div className="header-items">
           <a href="#" className="fas fa-bars icon active"></a>
           <div className="logo">
-            <img src="img/logo.png" alt="" srcset="" className="logo-youtube" />
+            <img
+              src={loago}
+              alt=""
+              srcset=""
+              className="logo-youtube"
+            />
           </div>
           <form className="search" onSubmit={handleform}>
             <label className="fas fa-search search-label"></label>

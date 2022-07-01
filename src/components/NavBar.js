@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Logout } from "../Actions";
 const Nav = () => {
-  const dispatch = useDispatch();
-  const logout = () => {
-    dispatch(Logout());
-  };
+  // const dispatch = useDispatch();
+  // const logout = () => {
+  //   dispatch(Logout());
+  // };
   return (
     <React.Fragment>
       <div className="nav nav-hidden">
@@ -41,7 +41,7 @@ const Nav = () => {
           <hr />
           <li className="nav-item">
             <span className="fas fa-sign-out"></span>
-            <a href="#" className="nav-item-btn" onClick={logout}>
+            <a href="#" className="nav-item-btn">
               Log out{" "}
             </a>
           </li>

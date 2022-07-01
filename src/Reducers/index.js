@@ -5,6 +5,7 @@ import Channel from "./Channel";
 import { Auth } from "./Auth";
 import Comment from "./Comment";
 import SearchR from "./SearchR";
+import Suggest from "./Suggest";
 export default combineReducers({
   post: VideoReducer,
   description: Details,
@@ -12,4 +13,5 @@ export default combineReducers({
   auth: Auth,
   commentlist: Comment,
   search: SearchR,
+  suggest: Suggest,
 });

@@ -106,7 +106,12 @@ h3 {
       margin-top: 0.3rem;
     }
   }
-  .section {
-    grid-template-columns: 30vw 1fr;
+
+  .result-images{
+    grid-column: 1/-1;
+  }
+  .r-product{
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   }
 }
+

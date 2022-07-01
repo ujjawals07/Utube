@@ -5,17 +5,22 @@ import { useSelector } from "react-redux";
 import numeral from "numeral";
 import moment from "moment";
 import ShowMoreText from "react-show-more-text";
+import { Subscription } from "../Actions";
 const VideDetails = ({ video }, { videoid }) => {
   console.log(video);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(Channeldata(video?.snippet?.channelId));
-    //dispatch(Subscription(video?.snippet?.channelId));
+    console.log("MUGHSE FATT RAHA HAI");
+    if (video?.snippet?.channelId) {
+      dispatch(Channeldata(video?.snippet?.channelId));
+    }
   }, [dispatch, video?.snippet?.channelId]);
 
   const channel = useSelector((state) => state.channel);
   //console.log(channel?.statistics?.subscriberCount);
-
+  const subscribeClick = () => {
+    dispatch(Subscription(video?.snippet?.channelId));
+  };
   return (
     <div className="videoplayertv-details">
       <div className="videoplayertv-title">{video?.snippet?.title}</div>
@@ -63,7 +68,9 @@ const VideDetails = ({ video }, { videoid }) => {
             </h5>
           </div>
         </div>
-        <button className="subscribe">subscribe</button>
+        <button className="subscribe" onClick={subscribeClick}>
+          subscribe
+        </button>
       </div>
     </div>
   );

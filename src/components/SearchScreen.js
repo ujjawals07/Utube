@@ -12,7 +12,6 @@ const SearchScreen = ({ video }, { id }) => {
   const navigate = useNavigate();
 
   const videoclick = () => {
-    console.log("cl");
     navigate(`/details/${videoid}`);
   };
   return (
