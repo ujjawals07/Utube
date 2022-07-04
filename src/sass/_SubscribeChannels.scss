@@ -1,0 +1,27 @@
+.s {
+  &-result {
+    overflow: hidden;
+    padding: 1rem;
+  }
+  &-title {
+    margin-left: 0rem;
+  }
+  &-para {
+    color: white;
+
+    text-transform: capitalize;
+    font-family: sans-serif;
+    // white-space: nowrap;
+    width: 100%;
+
+    color: white;
+    text-decoration: none;
+    border: none;
+  }
+  &-img {
+    width: 20%;
+  }
+  &-pic {
+    border-radius: 100px;
+  }
+}

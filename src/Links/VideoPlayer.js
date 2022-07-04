@@ -37,6 +37,7 @@ const VideoPlayer = () => {
           <VideDetails video={video} />
           <Comments videoid={id} />
         </div>
+
         <div className="suggestions">
           <div className="suggestions-videos">
             <h2 className="suggestions-heading">Up Next</h2>

@@ -60,7 +60,7 @@ const VideoList = ({ v }) => {
           <div className="r-item-name">{title}</div>
           <div className="r-item-price">
             <span className="fas fa-eye i"></span>
-            <h2> m views 2days ago</h2>
+            <h2 className="videolist-views"> 5m views 2days ago</h2>
           </div>
           <div className="r-channle-detail">
             <div className="r-channle-detail-pic">

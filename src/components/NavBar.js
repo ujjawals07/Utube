@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { Logout } from "../Actions";
+import GoogleAuth from "./GoogleAuth";
 const Nav = () => {
   // const dispatch = useDispatch();
   // const logout = () => {
@@ -19,9 +21,9 @@ const Nav = () => {
           </li>
           <li className="nav-item">
             <span className="fas fa-play"></span>
-            <a href="#" className="nav-item-btn">
+            <Link to={"/feed/subscriptions"} className="nav-item-btn">
               Subscription
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <span className="fas fa-thumbs-up"></span>
@@ -38,13 +40,7 @@ const Nav = () => {
             </a>
           </li>
           <br />
-          <hr />
-          <li className="nav-item">
-            <span className="fas fa-sign-out"></span>
-            <a href="#" className="nav-item-btn">
-              Log out{" "}
-            </a>
-          </li>
+
           <hr />
         </ul>
       </div>

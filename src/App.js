@@ -7,7 +7,10 @@ import Nav from "./components/NavBar";
 import SearchResult from "./Links/SeachResult";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Like from "./components/Like";
-
+import GoogleAuth from "./components/GoogleAuth";
+import SubscribeChannels from "./Links/SubscribeChannels";
+import ChannelsScreen from "./Links/ChannelScree";
+import SchannelVideos from "./Links/SchannelVideos";
 const App = () => {
   return (
     <React.Fragment>
@@ -17,6 +20,12 @@ const App = () => {
           <Route exact path="/" element={<Section />} />
           <Route path="/details/:id" element={<VideoPlayer />} />
           <Route path="/search/:q" element={<SearchResult />} />
+          <Route path="/feed/subscriptions" element={<SubscribeChannels />} />
+          <Route path="/channel" element={<ChannelsScreen />} />
+          <Route
+            path="/subscribechannelvideos/:resourceId"
+            element={<SchannelVideos />}
+          />
         </Routes>
       </Router>
     </React.Fragment>

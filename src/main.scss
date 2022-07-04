@@ -3,6 +3,8 @@
 @import "sass/Videos";
 @import "sass/VideoPlayer";
 @import "sass/Search";
+@import "sass/SubscribeChannels";
+@import "sass/SchannelVideos";
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +18,7 @@ body {
   color: rgb(236, 227, 227);
 }
 
-.uuu{
+.uuu {
   color: white;
+  font-size: 1rem;
 }

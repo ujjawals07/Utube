@@ -295,6 +295,10 @@ h3 {
   }
 }
 
+.videolist-views {
+  font-size: 1rem;
+}
+
 .videoplayer {
   display: -ms-grid;
   display: grid;
@@ -314,6 +318,9 @@ h3 {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 1rem 2rem;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
 }
 
 .videoplayertv-title {
@@ -562,7 +569,9 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 1rem;
+  margin: 1.3rem;
+  text-decoration: none;
+  color: white;
 }
 
 .suggestions-videos-item-channle {
@@ -572,7 +581,7 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 1.3rem;
+  margin-top: 0.8rem;
 }
 
 .suggestions-videos-item-channle-name {
@@ -593,14 +602,16 @@ h3 {
 }
 
 .suggestions-videos-item-details-h {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: sans-serif;
   margin-bottom: 1rem;
-  text-overflow: ellipsis;
   white-space: nowrap;
   width: 40%;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: white;
+  text-decoration: none;
+  border: none;
 }
 
 .suggestions-videos-item-details-views {
@@ -646,7 +657,7 @@ h3 {
 
 @media (max-width: 1124px) {
   .videoplayer {
-    padding: 1rem .2rem;
+    padding: 1rem 0.2rem;
   }
   .suggestions {
     -ms-grid-column: 1;
@@ -698,7 +709,7 @@ h3 {
 
 @media (max-width: 600px) {
   html {
-    font-size: 55%;
+    font-size: 49%;
   }
   .comment {
     font-size: 1rem;
@@ -744,6 +755,15 @@ h4 {
   color: white;
   font-family: sans-serif;
   text-decoration: none;
+}
+
+.d {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
 }
 
 .search-screen {
@@ -837,6 +857,47 @@ h4 {
   margin-top: 0.5rem;
 }
 
+.s-result {
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.s-title {
+  margin-left: 0rem;
+}
+
+.s-para {
+  color: white;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+
+.s-img {
+  width: 20%;
+}
+
+.s-pic {
+  border-radius: 100px;
+}
+
+.SchannnelVideos-title {
+  color: white;
+  margin-left: 1rem;
+}
+
+.SchannnelVideos-img {
+  width: 10rem;
+  height: auto;
+}
+
+.SchannnelVideos-btn {
+  margin-right: 2rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -854,5 +915,6 @@ body {
 
 .uuu {
   color: white;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=main.css.map */

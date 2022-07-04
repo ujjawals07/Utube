@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Login } from "../Actions";
 import { useNavigate } from "react-router";
 import loago from "../img/logo.png";
+import { Link } from "react-router-dom";
+import GoogleAuth from "./GoogleAuth";
 const Header = () => {
   const dispatch = useDispatch();
   const Loginopen = () => {
@@ -23,12 +25,9 @@ const Header = () => {
         <div className="header-items">
           <a href="#" className="fas fa-bars icon active"></a>
           <div className="logo">
-            <img
-              src={loago}
-              alt=""
-              srcset=""
-              className="logo-youtube"
-            />
+            <Link to="/">
+              <img src={loago} alt="" srcset="" className="logo-youtube" />
+            </Link>
           </div>
           <form className="search" onSubmit={handleform}>
             <label className="fas fa-search search-label"></label>
@@ -40,10 +39,7 @@ const Header = () => {
             />
           </form>
           <div className="icons">
-            <a href="#" className="fas fa-bell icon deactive"></a>
-            <a href="#" className="fas fa-user icon" onClick={Loginopen}>
-              {" "}
-            </a>
+            <GoogleAuth />
           </div>
         </div>
       </div>

@@ -1,11 +1,22 @@
 import YouTubeApi from "../Apis/YouTubeApi";
+import axios from "axios";
 import auth from "../firebase";
 import firebase from "firebase/compat/app";
 import { utube } from "../Apis/YouTubeApi";
 import { useEffect } from "react";
 
+// export const signin = (userid) => {
+//   return {
+//     type: "SIGN_IN",
+//     payload: userid,
+//   };
+// };
 
-
+// export const signOut = () => {
+//   return {
+//     type: "SIGN_OUT",
+//   };
+// };
 
 /*export const Login = (token) => async (dispatch) => {
   try {
@@ -92,27 +103,62 @@ export const Channeldata = (id) => async (dispatch) => {
 
 export const Subscription = (id) => async (dispatch, getState) => {
   try {
-    console.log(getState().auth, "land");
-    const { data } = await YouTubeApi.get("/subscriptions", {
-      params: {
-        part: "snippet",
-        forChannelId: id,
-        mine: true,
+    const body = {
+      snippet: {
+        resourceId: id,
       },
-      headers: {
-        Authorization: `Bearer ${getState().auth.accessToken}`,
-      },
-    });
+    };
+    const { data } = await axios.post(
+      "https://www.googleapis.com/youtube/v3/subscriptions",
+      body,
+      {
+        params: {
+          part: "snippet",
+          forChannelId: id,
+          mine: true,
+          key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+          access_token:
+            window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+        },
+      }
+    );
+    console.log(data);
+
     dispatch({
       type: "SUBSCRIPTION_DATA",
       payload: data.items.length !== 0,
     });
-    console.log(data);
   } catch (error) {
     console.log(error.response.data);
   }
 };
-
+export const LikeVideo = (id) => async (dispatch, getState) => {
+  try {
+    const res = await axios.post(
+      "https://www.googleapis.com/youtube/v3/videos/rate",
+      null,
+      {
+        params: {
+          part: "snippet",
+          id: id,
+          rating: "like",
+          key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+          access_token:
+            window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+        },
+      }
+    );
+    if (res.status !== 204) {
+      dispatch({
+        type: "LIKE_DATA",
+      });
+    } else {
+      console.log("alredy liked");
+    }
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
 export const GetComments = (id) => async (dispatch) => {
   const res = await YouTubeApi("/commentThreads", {
     params: {
@@ -156,4 +202,111 @@ export const SuggestVideos = (id) => async (dispatch) => {
     type: "SUGGEST_SUCCESS",
     payload: res.data,
   });
+};
+
+export const MyComments = (id, text) => async (dispatch, getState) => {
+  try {
+    const obj = {
+      snippet: {
+        videoId: id,
+        topLevelComment: {
+          snippet: {
+            textOriginal: text,
+          },
+        },
+      },
+    };
+
+    await axios.post(
+      "https://www.googleapis.com/youtube/v3/commentThreads",
+      obj,
+
+      {
+        params: {
+          part: "snippet",
+          key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+          access_token:
+            window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+        },
+      }
+    );
+
+    dispatch({
+      type: "MYCOMMENTS_SUCCESS",
+    });
+
+    setTimeout(() => dispatch(GetComments(id)), 3000);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const MySubscription = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "SUBSCRIPTIONS_CHANNEL_REQUEST",
+    });
+    const res = await axios.get(
+      "https://www.googleapis.com/youtube/v3/subscriptions",
+
+      {
+        params: {
+          part: "snippet,contentDetails",
+          mine: true,
+          key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+          access_token:
+            window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+        },
+      }
+    );
+    dispatch({
+      type: "SUBSCRIPTIONS_CHANNEL_SUCCESS",
+      payload: res.data.items,
+    });
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: "SUBSCRIPTIONS_CHANNEL_FAIL",
+      payload: error.res,
+    });
+  }
+};
+export const getVideosByChannel = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "CHANNEL_VIDEOS_REQUEST",
+    });
+
+    // 1. get upload playlist id
+    const {
+      data: { items },
+    } = await YouTubeApi("/channels", {
+      params: {
+        part: "contentDetails",
+        id: id,
+      },
+    });
+    console.log(items);
+    const uploadPlaylistId = items[0].contentDetails.relatedPlaylists.uploads;
+    // 2. get the videos using the id
+    const { data } = await YouTubeApi("/playlistItems", {
+      params: {
+        part: "snippet,contentDetails",
+        playlistId: uploadPlaylistId,
+        maxResults: 30,
+      },
+    });
+
+    dispatch({
+      type: "CHANNEL_VIDEOS_SUCCESS",
+      payload: data.items,
+    });
+  } catch (error) {
+    console.log(error.response.data.message);
+    dispatch({
+      type: "CHANNEL_DETAILS_FAIL",
+      payload: error.response.data,
+    });
+  }
 };

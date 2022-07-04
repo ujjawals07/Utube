@@ -2,15 +2,22 @@ import React from "react";
 import numeral from "numeral";
 import moment from "moment";
 import { useNavigate } from "react-router";
+
+import { Link } from "react-router-dom";
 const SuggestVideo = ({ video }, { key }) => {
   const navigate = useNavigate();
   const videoId = video.id.videoId;
   const videoClick = () => {
-    navigate(`/details/${videoId}`);
+    window.scrollTo(0, 0);
+    // navigate(`/details/${videoId}`);
   };
   return (
     <React.Fragment>
-      <div className="suggestions-videos-item" onClick={videoClick}>
+      <Link
+        className="suggestions-videos-item"
+        to={`/details/${videoId}`}
+        onClick={videoClick}
+      >
         <div className="suggestions-videos-item-img">
           <img
             src={video.snippet.thumbnails.medium.url}
@@ -34,7 +41,7 @@ const SuggestVideo = ({ video }, { key }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </React.Fragment>
   );
 };

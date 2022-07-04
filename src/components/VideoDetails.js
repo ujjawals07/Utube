@@ -6,8 +6,10 @@ import numeral from "numeral";
 import moment from "moment";
 import ShowMoreText from "react-show-more-text";
 import { Subscription } from "../Actions";
+import { LikeVideo } from "../Actions";
 const VideDetails = ({ video }, { videoid }) => {
-  console.log(video);
+
+  
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("MUGHSE FATT RAHA HAI");
@@ -17,9 +19,14 @@ const VideDetails = ({ video }, { videoid }) => {
   }, [dispatch, video?.snippet?.channelId]);
 
   const channel = useSelector((state) => state.channel);
-  //console.log(channel?.statistics?.subscriberCount);
+  console.log(channel);
+
   const subscribeClick = () => {
     dispatch(Subscription(video?.snippet?.channelId));
+  };
+  const Likevideo = () => {
+    
+    dispatch(LikeVideo(video.id));
   };
   return (
     <div className="videoplayertv-details">
@@ -42,7 +49,10 @@ const VideDetails = ({ video }, { videoid }) => {
         </p>
       </ShowMoreText>
       <div className="videoplayertv-icons">
-        <i className="fas fa-thumbs-up videoplayertv-icons-i">
+        <i
+          className="fas fa-thumbs-up videoplayertv-icons-i"
+          onClick={Likevideo}
+        >
           <span className="inumber">
             {numeral(video?.statistics?.likeCount).format("0.a")}
           </span>

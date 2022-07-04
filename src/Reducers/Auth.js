@@ -1,46 +1,31 @@
-const initialState = {
-  accessToken: sessionStorage.getItem("ytc-access-token")
-    ? sessionStorage.getItem("ytc-access-token")
-    : null,
-  user: sessionStorage.getItem("ytc-user")
-    ? JSON.parse(sessionStorage.getItem("ytc-user"))
-    : null,
-  loading: false,
+const SIGN_IN = "SIGN_IN";
+const SIGN_OUT = "SIGN_OUT";
+
+const INITIAL_STATE = {
+  isSignedIn: null,
+  userId: null,
 };
 
-export const Auth = (prevState = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "LOGIN_REQUEST":
-      return {
-        ...prevState,
-        loading: true,
-      };
-    case "LOGIN_SUCCESS":
-      return {
-        ...prevState,
-        accessToken: action.payload,
-        loading: false,
-      };
-
-    case "LOGIN_FAILS":
-      return {
-        ...prevState,
-        accessToken: null,
-        loading: false,
-        error: action.payload,
-      };
-    case "LOAD_PROFILE":
-      return {
-        ...prevState,
-        user: action.payload,
-      };
-    case "LOG_OUT":
-      return {
-        ...prevState,
-        accessToken: null,
-        user: null,
-      };
+    case SIGN_IN:
+      return { ...state, isSignedIn: true, userId: action.payload };
+    case SIGN_OUT:
+      return { ...state, isSignedIn: false, userId: null };
     default:
-      return prevState;
+      return state;
   }
+};
+
+export const signIn = (userId) => {
+  return {
+    type: SIGN_IN,
+    payload: userId,
+  };
+};
+
+export const signOut = () => {
+  return {
+    type: SIGN_OUT,
+  };
 };
