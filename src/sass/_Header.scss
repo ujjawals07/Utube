@@ -1,6 +1,6 @@
 .header {
   padding: 0.4rem;
-  background-color: rgb(7, 7, 7);
+  //background-color: rgb(7, 7, 7);
   &-items {
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
 }
 
 .icon {
-  color: #f0f0f0;
+  color: #fffefe;
   font-size: 1.6rem;
   margin-right: 2rem;
   border: none;
@@ -51,9 +51,9 @@
   display: none;
 }
 @media (max-width: 685px) {
-  html {
-    font-size: 65%;
-  }
+  // html {
+  //   font-size: 65%;
+  // }
   .deactive {
     display: none;
   }
@@ -71,4 +71,44 @@
 .user-n {
   font-size: 0.6rem;
   font-family: sans-serif;
+}
+.icons {
+  position: relative;
+}
+
+.loginpopup {
+  position: absolute;
+  top: 165%;
+  right: 0;
+  background-color: #000000;
+  z-index: 9999999;
+  //  padding: 1rem 1rem;
+  height: 5rem;
+  width: 10rem;
+}
+.login-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-item {
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.5rem;
+  // color: black;
+  margin-top: 0.1rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.google-box {
+  border: none;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 0.8rem;
+  border: none;
+  padding: 0rem;
+  background: #000;
+  cursor: pointer;
 }

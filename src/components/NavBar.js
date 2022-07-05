@@ -14,10 +14,10 @@ const Nav = () => {
         <ul className="nav-items">
           <li className="nav-item">
             <span className="fas fa-home"></span>
-            <a href="#" className="nav-item-btn">
+            <Link to={"/"} className="nav-item-btn">
               {" "}
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <span className="fas fa-play"></span>
@@ -27,10 +27,10 @@ const Nav = () => {
           </li>
           <li className="nav-item">
             <span className="fas fa-thumbs-up"></span>
-            <a href="#" className="nav-item-btn">
+            <Link to={"/like"} className="nav-item-btn">
               {" "}
               Likedvideos
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <span className="fas fa-clock"></span>

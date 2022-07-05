@@ -1,6 +1,6 @@
 .video {
   grid-column: 2/3;
-  background: rgb(29, 29, 29);
+  //background: rgb(29, 29, 29);
   overflow: hidden;
 
   &-suggestions {
@@ -63,7 +63,7 @@
     color: rgb(227, 227, 227);
     font-family: sans-serif;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-top: 0.5rem;
     text-transform: capitalize;
     overflow: hidden;
@@ -96,7 +96,7 @@ h3 {
 }
 
 .i {
-  font-size: 1rem;
+  font-size: 0.6rem;
 }
 
 @media (max-width: 700px) {
@@ -107,13 +107,10 @@ h3 {
     }
   }
 
-  .result-images{
-    grid-column: 1/-1;
-  }
-  .r-product{
+  .r-product {
     grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   }
 }
-.videolist-views{
-  font-size: 1rem;
+.videolist-views {
+  font-size: 0.7rem;
 }

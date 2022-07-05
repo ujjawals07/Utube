@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 const VideoList = ({ v }) => {
+  
   const [channelIcon, setChannelIcon] = useState(null);
   const {
     id,
@@ -65,7 +66,7 @@ const VideoList = ({ v }) => {
           <div className="r-channle-detail">
             <div className="r-channle-detail-pic">
               <img
-                src="img/4902560.jpg"
+                src={channelIcon?.url}
                 alt=""
                 className="r-channle-detail-img"
               />

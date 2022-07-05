@@ -4,7 +4,6 @@ import * as AuthorizationAction from "../Reducers/Auth";
 const arr =
   "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.channel-memberships.creator https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtubepartner-channel-audit";
 
-
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);
   console.log(isSignedIn);
@@ -21,8 +20,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
         setAuth(window.gapi.auth2.getAuthInstance());
         onAuthChange(window.gapi.auth2.getAuthInstance().isSignedIn.get());
         console.log(
-          window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
-          "lund"
+          window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token
         );
         window.gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange);
       });
@@ -56,18 +54,16 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
     } else if (isSignedIn) {
       return (
         <div>
-          <button onClick={onSignOutClick} className="ui red google button">
+          <button onClick={onSignOutClick} className="google-box">
             {" "}
-            <i className="google icon" />
             Signout
           </button>
         </div>
       );
     } else {
       return (
-        <button onClick={onSignInClick} className="ui red google button">
+        <button onClick={onSignInClick} className="google-box">
           {" "}
-          <i className="google icon" />
           Sign In with Google
         </button>
       );

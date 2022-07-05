@@ -11,16 +11,19 @@ import GoogleAuth from "./components/GoogleAuth";
 import SubscribeChannels from "./Links/SubscribeChannels";
 import ChannelsScreen from "./Links/ChannelScree";
 import SchannelVideos from "./Links/SchannelVideos";
+import MyLikeVideos from "./Links/MyLikeVideos";
 const App = () => {
   return (
     <React.Fragment>
       <Router>
         <Header />
+    
         <Routes>
           <Route exact path="/" element={<Section />} />
           <Route path="/details/:id" element={<VideoPlayer />} />
           <Route path="/search/:q" element={<SearchResult />} />
           <Route path="/feed/subscriptions" element={<SubscribeChannels />} />
+          <Route path="/like" element={<MyLikeVideos />} />
           <Route path="/channel" element={<ChannelsScreen />} />
           <Route
             path="/subscribechannelvideos/:resourceId"

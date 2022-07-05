@@ -15,7 +15,7 @@
 
   &-title {
     margin-top: 0.4rem;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-family: sans-serif;
     font-weight: 500;
     margin-left: 0.5rem;
@@ -25,7 +25,7 @@
     margin-top: 1rem;
     font-family: sans-serif;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: .9rem;
     line-height: 2rem;
     // width: 50vw;
   }
@@ -41,7 +41,7 @@
 
   &-channle {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 1.1rem;
     justify-content: space-between;
     align-items: center;
     padding: 0.2rem 0.5rem;
@@ -61,7 +61,7 @@
       border-radius: 200px;
     }
     &-name {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-family: sans-serif;
       padding: 0.3rem 0.5rem;
       text-transform: capitalize;
@@ -78,11 +78,11 @@
   margin-top: 0.7rem;
   font-family: sans-serif;
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 .followers {
   font-family: sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.4rem;
   font-family: 500;
 }
@@ -100,7 +100,7 @@
   display: flex;
   flex-direction: column;
   &-number {
-    font-family: 1.5rem;
+    font-size: 1rem;
     font-family: sans-serif;
   }
 
@@ -131,7 +131,7 @@
 
 .comment {
   font-family: sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
   background-color: rgb(72, 70, 70);
   padding: 0.5rem 0.7rem;
@@ -152,19 +152,19 @@
 }
 
 .user-name {
-  font-size: 1.3rem;
+  font-size: .9rem;
   font-family: sans-serif;
   margin-left: 0.4rem;
   padding: 0.2rem 1rem;
 }
 .timeago {
-  font-size: 1rem;
+  font-size: .6rem;
   font-family: sans-serif;
   margin-left: 0.5rem;
 }
 .user-comment {
   font-family: sans-serif;
-  font-size: 1.2rem;
+  font-size: .8rem;
   margin-top: 0.4rem;
   margin-left: 0.4rem;
   padding: 0.2rem 1rem;
@@ -206,7 +206,7 @@
         align-items: center;
         margin-top: 0.8rem;
         &-name {
-          font-size: 1rem;
+          font-size: .8rem;
           font-family: sans-serif;
           margin-left: 0.4rem;
         }
@@ -217,7 +217,7 @@
         margin-left: 1rem;
 
         &-h {
-          font-size: 1.3rem;
+          font-size: .9rem;
           font-family: sans-serif;
           margin-bottom: 1rem;
           white-space: nowrap;
@@ -229,12 +229,12 @@
           border: none;
         }
         &-views {
-          font-size: 1.3rem;
+          font-size: .6rem;
           font-family: sans-serif;
         }
         &-date {
           font-family: sans-serif;
-          font-size: 1.3rem;
+          font-size: .6rem;
         }
       }
       &-img {
@@ -261,7 +261,7 @@
   }
 }
 .suggestions-videos-item-channle-name {
-  font-size: 1.2rem;
+  font-size: .8rem;
   font-family: sans-serif;
 }
 
@@ -316,15 +316,14 @@
     height: 3rem;
   }
 }
-@media (max-width: 600px) {
-}
+
 
 @media (max-width: 600px) {
   html {
     font-size: 49%;
   }
   .comment {
-    font-size: 1rem;
+    //font-size: 1rem;
     padding: 0.3rem 0.5rem;
   }
 }
@@ -352,7 +351,7 @@
 h4 {
   font-family: sans-serif;
   color: rgb(217, 217, 217);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-transform: capitalize;
   font-weight: 400;
 }
@@ -362,9 +361,9 @@ h4 {
 }
 .show {
   color: white;
-
   font-family: sans-serif;
   text-decoration: none;
+  font-size: .9rem;
 }
 .d {
   grid-row: 2/3;

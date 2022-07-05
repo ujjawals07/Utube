@@ -6,9 +6,11 @@ import { MySubscription } from "../Actions";
 import { Link } from "react-router-dom";
 const SubscribeChannels = () => {
   const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(MySubscription());
-  }, [dispatch]);
+  }, [dispatch, auth]);
 
   const videos = useSelector((state) => state.mysubscription.videos);
 

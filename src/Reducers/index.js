@@ -8,6 +8,7 @@ import Suggest from "./Suggest";
 import Auth from "./Auth";
 import subscriptionsChannelReducer from "./MySubscriptionR";
 import { channelVideosReducer } from "./SubscribeChannelVideo";
+import MyLikedVideoR from "./MyLikedVideoR";
 export default combineReducers({
   post: VideoReducer,
   description: Details,
@@ -18,4 +19,5 @@ export default combineReducers({
   auth: Auth,
   mysubscription: subscriptionsChannelReducer,
   channelvideosR: channelVideosReducer,
+  mylikedvideos: MyLikedVideoR,
 });

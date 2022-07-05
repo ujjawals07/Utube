@@ -74,7 +74,17 @@ export const fetchdata = () => async (dispatch) => {
     payload: response.data.items,
   });
 };
-
+// export const likedVideos = async () => {
+//   const { data } = await YouTubeApi("/channels", {
+//     params: {
+//       part: "contentDetails",
+//       mine: true,
+//       key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+//       access_token:
+//         window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+//     },
+//   });
+// };
 export const Detailsdata = (id) => async (dispatch) => {
   const { data } = await YouTubeApi("/videos", {
     params: {
@@ -122,7 +132,6 @@ export const Subscription = (id) => async (dispatch, getState) => {
         },
       }
     );
-    console.log(data);
 
     dispatch({
       type: "SUBSCRIPTION_DATA",
@@ -142,6 +151,7 @@ export const LikeVideo = (id) => async (dispatch, getState) => {
           part: "snippet",
           id: id,
           rating: "like",
+          maxResults: 50,
           key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
           access_token:
             window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
@@ -254,11 +264,14 @@ export const MySubscription = () => async (dispatch, getState) => {
           part: "snippet,contentDetails",
           mine: true,
           key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+          maxResults: 50,
           access_token:
             window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
         },
       }
     );
+
+    console.log(res, "gulgul");
     dispatch({
       type: "SUBSCRIPTIONS_CHANNEL_SUCCESS",
       payload: res.data.items,
@@ -297,7 +310,7 @@ export const getVideosByChannel = (id) => async (dispatch) => {
         maxResults: 30,
       },
     });
-
+    console.log(data);
     dispatch({
       type: "CHANNEL_VIDEOS_SUCCESS",
       payload: data.items,
@@ -309,4 +322,25 @@ export const getVideosByChannel = (id) => async (dispatch) => {
       payload: error.response.data,
     });
   }
+};
+
+export const MyLikedVideos = (id) => async (dispatch) => {
+  const res = await axios.get(
+    "https://www.googleapis.com/youtube/v3/videos",
+    {
+      params: {
+        part: "snippet,contentDetails,statistics",
+        myRating: "like",
+        maxResults:50,
+        key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+        access_token:
+          window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+      },
+    }
+  );
+  
+  dispatch({
+    type: "MYLIKEDVIDEO_SUCCESS",
+    payload: res.data.items,
+  });
 };
