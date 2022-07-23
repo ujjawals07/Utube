@@ -64,7 +64,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
       return (
         <button onClick={onSignInClick} className="google-box">
           {" "}
-          Sign In with Google
+          Sign In
         </button>
       );
     }

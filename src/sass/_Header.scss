@@ -1,6 +1,9 @@
 .header {
   padding: 0.4rem;
-  //background-color: rgb(7, 7, 7);
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+  background-color: rgb(7, 7, 7);
   &-items {
     display: flex;
     align-items: center;
@@ -21,6 +24,8 @@
     background: #000;
     color: white;
     outline: #f0f0f0;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
   }
   &-label {
     font-size: 1rem;

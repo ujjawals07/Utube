@@ -10,7 +10,7 @@ const ChannelsScreen = () => {
     dispatch(getVideosByChannel());
   }, [dispatch]);
 
-  return <div>he</div>;
+  return <div></div>;
 };
 
 export default ChannelsScreen;

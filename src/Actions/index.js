@@ -5,59 +5,8 @@ import firebase from "firebase/compat/app";
 import { utube } from "../Apis/YouTubeApi";
 import { useEffect } from "react";
 
-// export const signin = (userid) => {
-//   return {
-//     type: "SIGN_IN",
-//     payload: userid,
-//   };
-// };
-
-// export const signOut = () => {
-//   return {
-//     type: "SIGN_OUT",
-//   };
-// };
-
-/*export const Login = (token) => async (dispatch) => {
-  try {
-    dispatch({
-      type: "LOGIN_REQUEST",
-    });
-
-    // const Google = (
-    //   <GoogleLogin
-    //     clientId={
-    //       "444938917597-e2f4of6pm1v35g9fo9rms3u89n7ukfe6.apps.googleusercontent.com"
-    //     }
-    //     buttonText="Login"
-    //     cookiePolicy={"single_host_origin"}
-    //   ></GoogleLogin>
-    // );
-    console.log(token);
-
-    // sessionStorage.setItem("ytc-access-token", accessToken);
-    // sessionStorage.setItem("ytc-user", JSON.stringify(Profile));
-    dispatch({
-      type: "LOGIN_SUCCESS",
-      payload: token,
-    });
-    dispatch({
-      type: "LOAD_PROFILE",
-      //  payload: Profile,
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-export const Logout = () => async (dispatch) => {
-  await auth.signOut();
-  dispatch({
-    type: "LOG_OUT",
-  });
-  sessionStorage.removeItem("ytc-accesss-token");
-  sessionStorage.removeItem("ytc-user");
-};*/
 export const fetchdata = () => async (dispatch) => {
+  let arr = [];
   const response = await YouTubeApi("/videos", {
     params: {
       part: "snippet,contentDetails,statistics",
@@ -65,26 +14,33 @@ export const fetchdata = () => async (dispatch) => {
       type: "video",
       regionCode: "IN",
       maxResults: 20,
-      pageToken: "",
     },
   });
-  console.log(response);
+  let nextPageToken = response.data.nextPageToken
+    ? response.data.nextPageToken
+    : null;
+  while (nextPageToken) {
+    console.log();
+    let res = await YouTubeApi("/videos", {
+      params: {
+        part: "snippet,contentDetails,statistics",
+        chart: "mostPopular",
+        type: "video",
+        regionCode: "IN",
+        maxResults: 20,
+        pageToken: nextPageToken,
+      },
+    });
+    nextPageToken = res.data.nextPageToken;
+    arr = [...response.data.items, ...arr];
+  }
+
   dispatch({
     type: "FETCH_POSTS",
-    payload: response.data.items,
+    payload: arr,
   });
 };
-// export const likedVideos = async () => {
-//   const { data } = await YouTubeApi("/channels", {
-//     params: {
-//       part: "contentDetails",
-//       mine: true,
-//       key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
-//       access_token:
-//         window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
-//     },
-//   });
-// };
+
 export const Detailsdata = (id) => async (dispatch) => {
   const { data } = await YouTubeApi("/videos", {
     params: {
@@ -111,36 +67,6 @@ export const Channeldata = (id) => async (dispatch) => {
   });
 };
 
-export const Subscription = (id) => async (dispatch, getState) => {
-  try {
-    const body = {
-      snippet: {
-        resourceId: id,
-      },
-    };
-    const { data } = await axios.post(
-      "https://www.googleapis.com/youtube/v3/subscriptions",
-      body,
-      {
-        params: {
-          part: "snippet",
-          forChannelId: id,
-          mine: true,
-          key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
-          access_token:
-            window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
-        },
-      }
-    );
-
-    dispatch({
-      type: "SUBSCRIPTION_DATA",
-      payload: data.items.length !== 0,
-    });
-  } catch (error) {
-    console.log(error.response.data);
-  }
-};
 export const LikeVideo = (id) => async (dispatch, getState) => {
   try {
     const res = await axios.post(
@@ -252,6 +178,7 @@ export const MyComments = (id, text) => async (dispatch, getState) => {
 };
 
 export const MySubscription = () => async (dispatch, getState) => {
+  let arr = [];
   try {
     dispatch({
       type: "SUBSCRIPTIONS_CHANNEL_REQUEST",
@@ -271,10 +198,31 @@ export const MySubscription = () => async (dispatch, getState) => {
       }
     );
 
-    console.log(res, "gulgul");
+    let nextPageToken = res.data.nextPageToken ? res.data.nextPageToken : null;
+
+    while (nextPageToken) {
+      let response = await axios.get(
+        "https://www.googleapis.com/youtube/v3/subscriptions",
+
+        {
+          params: {
+            part: "snippet,contentDetails",
+            mine: true,
+            key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+            maxResults: 50,
+            pageToken: nextPageToken,
+            access_token:
+              window.gapi.auth2.getAuthInstance().currentUser.yb.Cc
+                .access_token,
+          },
+        }
+      );
+      nextPageToken = response.data.nextPageToken;
+      arr = [...response.data.items, ...arr];
+    }
     dispatch({
       type: "SUBSCRIPTIONS_CHANNEL_SUCCESS",
-      payload: res.data.items,
+      payload: arr,
     });
     console.log(res);
   } catch (error) {
@@ -325,22 +273,43 @@ export const getVideosByChannel = (id) => async (dispatch) => {
 };
 
 export const MyLikedVideos = (id) => async (dispatch) => {
-  const res = await axios.get(
+  let vrr = [];
+  const response = await axios.get(
     "https://www.googleapis.com/youtube/v3/videos",
     {
       params: {
         part: "snippet,contentDetails,statistics",
         myRating: "like",
-        maxResults:50,
+        maxResults: 50,
         key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
         access_token:
           window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
       },
     }
   );
-  
+
+  console.log(response);
+  let nextPageToken = response.data.nextPageToken
+    ? response.data.nextPageToken
+    : null;
+  while (nextPageToken) {
+    let res = await axios.get("https://www.googleapis.com/youtube/v3/videos", {
+      params: {
+        part: "snippet,contentDetails,statistics",
+        myRating: "like",
+        maxResults: 50,
+        pageToken: nextPageToken,
+        key: "AIzaSyD7f02AKj9i1ZbOKoMP68cd7CNBzhveTp8",
+        access_token:
+          window.gapi.auth2.getAuthInstance().currentUser.yb.Cc.access_token,
+      },
+    });
+    nextPageToken = res.data.nextPageToken;
+    vrr = [...res.data.items, ...vrr];
+  }
+
   dispatch({
     type: "MYLIKEDVIDEO_SUCCESS",
-    payload: res.data.items,
+    payload: vrr,
   });
 };

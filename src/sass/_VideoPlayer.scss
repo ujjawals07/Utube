@@ -5,6 +5,7 @@
   color: white;
   overflow: hidden;
   padding: 1rem 3rem;
+  margin-top: 6%;
 }
 .videoplayertv {
   display: flex;
@@ -25,7 +26,7 @@
     margin-top: 1rem;
     font-family: sans-serif;
     font-weight: 400;
-    font-size: .9rem;
+    font-size: 0.9rem;
     line-height: 2rem;
     // width: 50vw;
   }
@@ -150,24 +151,27 @@
     align-items: center;
   }
 }
-
+.users{
+  overflow: hidden;
+}
 .user-name {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-family: sans-serif;
   margin-left: 0.4rem;
   padding: 0.2rem 1rem;
 }
 .timeago {
-  font-size: .6rem;
+  font-size: 0.6rem;
   font-family: sans-serif;
   margin-left: 0.5rem;
 }
 .user-comment {
   font-family: sans-serif;
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin-top: 0.4rem;
   margin-left: 0.4rem;
   padding: 0.2rem 1rem;
+  width: 70%;
 }
 //user comment pic
 .cp {
@@ -206,7 +210,7 @@
         align-items: center;
         margin-top: 0.8rem;
         &-name {
-          font-size: .8rem;
+          font-size: 0.8rem;
           font-family: sans-serif;
           margin-left: 0.4rem;
         }
@@ -217,7 +221,7 @@
         margin-left: 1rem;
 
         &-h {
-          font-size: .9rem;
+          font-size: 0.9rem;
           font-family: sans-serif;
           margin-bottom: 1rem;
           white-space: nowrap;
@@ -229,12 +233,12 @@
           border: none;
         }
         &-views {
-          font-size: .6rem;
+          font-size: 0.6rem;
           font-family: sans-serif;
         }
         &-date {
           font-family: sans-serif;
-          font-size: .6rem;
+          font-size: 0.6rem;
         }
       }
       &-img {
@@ -261,7 +265,7 @@
   }
 }
 .suggestions-videos-item-channle-name {
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-family: sans-serif;
 }
 
@@ -317,18 +321,20 @@
   }
 }
 
-
 @media (max-width: 600px) {
   html {
     font-size: 49%;
   }
-  .comment {
-    //font-size: 1rem;
-    padding: 0.3rem 0.5rem;
-  }
 }
 
 @media (max-width: 500px) {
+  .comment {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .user-comment {
+    font-size: 1rem;
+  }
   .subscribe {
     font-size: 1rem;
     padding: 0.7rem 0.5rem;
@@ -347,6 +353,9 @@
   .suggestions-videos-item-channle-pic {
     margin-top: 0.3rem;
   }
+  .videoplayertv {
+    margin-top: 6%;
+  }
 }
 h4 {
   font-family: sans-serif;
@@ -363,7 +372,7 @@ h4 {
   color: white;
   font-family: sans-serif;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .d {
   grid-row: 2/3;

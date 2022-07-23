@@ -7,18 +7,19 @@ import Nav from "../components/NavBar";
 import numeral from "numeral";
 const SchannelVideos = () => {
   const { resourceId } = useParams();
+
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getVideosByChannel(resourceId));
     dispatch(Channeldata(resourceId));
-  }, [dispatch, resourceId]);
-
-  const { videos } = useSelector((state) => state.channelvideosR);
+  }, [dispatch, resourceId, auth]);
   const channel = useSelector((state) => state.channel);
+  const { videos } = useSelector((state) => state.channelvideosR);
 
   return (
     <div className="section">
-      <div className="result-images">
+      <div className="result-image">
         <div className="videoplayertv-channle">
           <div className="videoplayertv-channle-details">
             <div className="videoplayertv-channle-img SchannnelVideos-img">
@@ -48,7 +49,7 @@ const SchannelVideos = () => {
                   <div className="r-items">
                     <div className="r-image">
                       <img
-                        src={v.snippet.thumbnails.medium.url}
+                        src={v?.snippet?.thumbnails?.medium?.url}
                         alt=""
                         srcset=""
                         className="r-product-image"

@@ -5,11 +5,9 @@ import { useSelector } from "react-redux";
 import numeral from "numeral";
 import moment from "moment";
 import ShowMoreText from "react-show-more-text";
-import { Subscription } from "../Actions";
+
 import { LikeVideo } from "../Actions";
 const VideDetails = ({ video }, { videoid }) => {
-
-  
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("MUGHSE FATT RAHA HAI");
@@ -19,15 +17,16 @@ const VideDetails = ({ video }, { videoid }) => {
   }, [dispatch, video?.snippet?.channelId]);
 
   const channel = useSelector((state) => state.channel);
-  console.log(channel);
 
-  const subscribeClick = () => {
-    dispatch(Subscription(video?.snippet?.channelId));
-  };
   const Likevideo = () => {
-    
     dispatch(LikeVideo(video.id));
   };
+  let str = "";
+  const LikeVideosList = useSelector((state) => state.mylikedvideos);
+  LikeVideosList.forEach((element) => {
+    str += element.id;
+  });
+
   return (
     <div className="videoplayertv-details">
       <div className="videoplayertv-title">{video?.snippet?.title}</div>
@@ -50,8 +49,11 @@ const VideDetails = ({ video }, { videoid }) => {
       </ShowMoreText>
       <div className="videoplayertv-icons">
         <i
-          className="fas fa-thumbs-up videoplayertv-icons-i"
+          className={`fas fa-thumbs-up ${video?.id}`}
           onClick={Likevideo}
+          style={
+            str.includes(video?.id) ? { color: "blue" } : { color: "white" }
+          }
         >
           <span className="inumber">
             {numeral(video?.statistics?.likeCount).format("0.a")}
@@ -78,7 +80,7 @@ const VideDetails = ({ video }, { videoid }) => {
             </h5>
           </div>
         </div>
-        <button className="subscribe" onClick={subscribeClick}>
+        <button className="subscribe">
           subscribe
         </button>
       </div>

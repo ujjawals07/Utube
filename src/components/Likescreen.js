@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import YouTubeApi from "../Apis/YouTubeApi";
-
+import { useSelector } from "react-redux";
 const Likescreen = ({ v }) => {
-  console.log(v);
   const [channelIcon, setChannelIcon] = useState(null);
   const channelId = v.snippet.channelId;
+  const auth = useSelector((state) => state.auth);
   useEffect(() => {
     const get_channel_icon = async () => {
       const {
@@ -20,11 +20,11 @@ const Likescreen = ({ v }) => {
       setChannelIcon(items[0].snippet.thumbnails.default);
     };
     get_channel_icon();
-  }, [channelId]);
+  }, [channelId, auth]);
 
   return (
     <React.Fragment>
-      <Link to={`/details/${v.id}`}>
+      <Link to={`/details/${v.id}`} style={{ textDecoration: "none" }}>
         <div className="r-items">
           <div className="r-image">
             <img

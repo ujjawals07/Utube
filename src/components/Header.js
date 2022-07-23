@@ -8,20 +8,16 @@ import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
 import NavActive from "./NavActive";
 import LoginPopup from "./LoginPopup";
+import { FaGoogle } from "react-icons/fa";
 const Header = () => {
+  const [ham, setHam] = useState(false);
   const dispatch = useDispatch();
-  const Loginopen = () => {
-    console.log("y");
-  };
-  const c = () => {
-    console.log('l');
-   
-
-  };
+ 
 
   let navigate = useNavigate();
   const [input, setinput] = useState("");
   const handleform = (e) => {
+    console.log("c");
     e.preventDefault();
     navigate(`/search/${input}`);
   };
@@ -31,15 +27,19 @@ const Header = () => {
   return (
     <React.Fragment>
       <div className="header">
+      <NavActive close={setHam} open={ham} />
         <div className="header-items">
-          <a href="#" className="fas fa-bars icon active" onClick={c}></a>
+          <a href="#" className="fas fa-bars icon active" onClick={() => setHam(!ham)} ></a>
           <div className="logo">
             <Link to="/">
               <img src={loago} alt="" srcset="" className="logo-youtube" />
             </Link>
           </div>
           <form className="search" onSubmit={handleform}>
-            <label className="fas fa-search search-label"></label>
+            <label
+              className="fas fa-search search-label"
+              onClick={handleform}
+            ></label>
             <input
               type="search"
               className="search-bar"
@@ -48,10 +48,8 @@ const Header = () => {
             />
           </form>
           <div className="icons">
-            <a className="fas fa-user icon" >
-            <GoogleAuth/>
-            </a>
-            
+            <FaGoogle size={20} />
+            <GoogleAuth />
           </div>
         </div>
       </div>

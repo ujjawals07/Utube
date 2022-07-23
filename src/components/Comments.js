@@ -4,6 +4,7 @@ import { GetComments } from "../Actions";
 import { useSelector } from "react-redux";
 import UserComments from "./UserComments";
 import { MyComments } from "../Actions";
+import Userpic from "../img/young-user-icon.png";
 const Comments = ({ videoid }) => {
   console.log(videoid);
   const [text, setText] = useState("");
@@ -27,7 +28,7 @@ const Comments = ({ videoid }) => {
       <h6 className="comments-number"></h6>
       <div className="comments-comment">
         <div className="comments-pic user-cp">
-          <img src="public/img/" alt="" srcset="" className="comments-img" />
+          <img src={Userpic} alt="" srcset="" className="comments-img" />
         </div>
         <form className="comments-inputs" onSubmit={Submit}>
           <input

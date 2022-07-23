@@ -5,17 +5,14 @@ import { useSelector } from "react-redux";
 import VideoList from "../components/VideoList";
 import Nav from "../components/NavBar";
 import Likescreen from "../components/Likescreen";
+
 const MyLikeVideos = () => {
   const dispatch = useDispatch();
 
-  // const auth = useSelector((state) => state.auth);
-  useEffect(
-    () => {
-      dispatch(MyLikedVideos());
-    },
-    dispatch
-    //auth
-  );
+  const auth = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(MyLikedVideos());
+  }, [dispatch, auth]);
 
   const LikeVideosList = useSelector((state) => state.mylikedvideos);
   console.log(LikeVideosList);
@@ -23,7 +20,7 @@ const MyLikeVideos = () => {
   return (
     <div className="section">
       <Nav />
-      <div className="result-images">
+      <div className="result-image">
         <div className="r-product">
           {LikeVideosList?.map((v) => {
             return <Likescreen v={v} />;

@@ -1,15 +1,17 @@
 .section {
- // background: rgb(29, 29, 29);
+  background: rgb(29, 29, 29);
   display: grid;
-  grid-template-columns: 20vw 1fr;
+  grid-template-columns: 15vw 1fr;
   grid-template-rows: auto;
 }
 
 .nav {
-  //background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
   grid-column: 1/2;
   grid-row: 1/2;
-
+  position: fixed;
+  top: 10%;
+  height: 100vh;
   &-items {
     padding: 1rem 0.3rem;
     list-style: none;
@@ -21,7 +23,7 @@
     margin: 1.5rem;
 
     &-btn {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: white;
       font-family: sans-serif;
       text-decoration: none;
@@ -30,15 +32,17 @@
 }
 span {
   padding: 0rem 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgb(249, 249, 249);
 }
 @media (max-width: 700px) {
   .nav {
-    position: absolute;
-    top: 7%;
-    left: 0;
+    position: fixed;
+    top: 10%;
+    left: 0%;
     height: 100vh;
+    z-index: 9999;
+    //display: none;
   }
   .nav-item {
     flex-direction: column;
@@ -47,10 +51,15 @@ span {
     }
   }
   .nav-hidden {
-     display: none;
+    //display: none;
+  }
+  .n{
+display: none;
   }
   .section {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
   }
 }
 

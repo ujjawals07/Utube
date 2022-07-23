@@ -24,7 +24,10 @@ const SubscribeChannels = () => {
             const resourceId = v.snippet.resourceId.channelId;
             return (
               <React.Fragment>
-                <Link to={`/subscribechannelvideos/${resourceId}`}>
+                <Link
+                  to={`/subscribechannelvideos/${resourceId}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="search-screen-result s-result">
                     <div className="search-screen-img s-img">
                       <img

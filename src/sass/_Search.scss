@@ -1,5 +1,7 @@
 .search-screen {
     width: 100%;
+    margin-top: 10%;
+    grid-column: 2/3;
     &-container {
       display: grid;
       //-ms-grid-columns: (minmax(25rem, 1fr))[auto-fit];
@@ -61,4 +63,18 @@
     color: white;
     margin-left: 1rem;
     margin-top: 0.5rem;
+  }
+  @media (max-width:600px){
+    .search-screen{
+&-h{
+  font-size: 1.3rem;
+}
+&-channel-h{
+  font-size: .9rem;
+}
+
+    }
+    .view{
+      font-size: 1rem;
+    }
   }

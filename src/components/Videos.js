@@ -4,6 +4,7 @@ import { fetchdata } from "../Actions";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import VideoList from "./VideoList";
+import Nav from "./NavBar";
 import YouTubeApi from "../Apis/YouTubeApi";
 const Videos = (props) => {
   const dispatch = useDispatch();
@@ -13,9 +14,16 @@ const Videos = (props) => {
 
   return (
     <React.Fragment>
-      {props.post.map((v) => {
-        return <VideoList v={v} key={v.id} />;
-      })}
+      <div className="section">
+        <Nav />
+        <div className="result-image">
+          <div className="r-product">
+            {props?.post?.map((v) => {
+              return <VideoList v={v} key={v.id} />;
+            })}
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 };

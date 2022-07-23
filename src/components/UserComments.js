@@ -20,7 +20,7 @@ const UserComments = ({ comment }) => {
             {moment(comment.updatedAt).fromNow()}
           </span>
         </div>
-        <div className="user-comment">{comment.textDisplay}</div>
+        <div className="user-comment" dangerouslySetInnerHTML={{ __html:comment.textDisplay }}/>
       </div>
     </div>
   );

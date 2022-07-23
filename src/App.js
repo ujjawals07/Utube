@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
 import css from "./main.css";
-import Section from "./components/Section";
 import VideoPlayer from "./Links/VideoPlayer";
 import Nav from "./components/NavBar";
 import SearchResult from "./Links/SeachResult";
@@ -12,14 +11,15 @@ import SubscribeChannels from "./Links/SubscribeChannels";
 import ChannelsScreen from "./Links/ChannelScree";
 import SchannelVideos from "./Links/SchannelVideos";
 import MyLikeVideos from "./Links/MyLikeVideos";
+import Videos from "./components/Videos";
 const App = () => {
   return (
     <React.Fragment>
       <Router>
         <Header />
-    
+
         <Routes>
-          <Route exact path="/" element={<Section />} />
+          <Route exact path="/" element={<Videos />} />
           <Route path="/details/:id" element={<VideoPlayer />} />
           <Route path="/search/:q" element={<SearchResult />} />
           <Route path="/feed/subscriptions" element={<SubscribeChannels />} />
